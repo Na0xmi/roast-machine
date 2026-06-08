@@ -29,6 +29,10 @@ The gap between you and your goals? It's called discipline.
 
 Drop a 🔥 if you're committed to the grind.`
 
+const boxTitle = (color = '#003399'): React.CSSProperties => ({ background: color, color: '#fff', fontSize: 10, fontWeight: 'bold', padding: '3px 6px', letterSpacing: 0.5 })
+const sectionBox = (borderColor = '#ccc'): React.CSSProperties => ({ border: `1px solid ${borderColor}`, margin: 6 })
+const intBtn = (active: boolean): React.CSSProperties => ({ fontSize: 10, padding: '3px 0', border: active ? '1px solid #003399' : '1px solid #999', background: active ? '#003399' : '#f5f5f5', color: active ? '#fff' : '#333', cursor: 'pointer', fontFamily: 'inherit', flex: 1, textAlign: 'center' })
+
 const s: Record<string, React.CSSProperties> = {
   topbar: { background: '#CC0000', color: '#fff', padding: '3px 8px', fontSize: 11, display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #990000', flexWrap: 'wrap', gap: 4 },
   pill: { background: '#ffcc00', color: '#000', padding: '1px 6px', borderRadius: 2, fontWeight: 'bold', fontSize: 10 },
@@ -41,23 +45,20 @@ const s: Record<string, React.CSSProperties> = {
   body: { display: 'grid', gridTemplateColumns: '148px 1fr 140px', borderTop: '1px solid #ccc', alignItems: 'start' },
   sideL: { borderRight: '1px solid #ccc' },
   sideR: { borderLeft: '1px solid #ccc' },
-  boxTitle: (color = '#003399') => ({ background: color, color: '#fff', fontSize: 10, fontWeight: 'bold' as const, padding: '3px 6px', letterSpacing: 0.5 }),
   sideContent: { padding: '5px 6px', fontSize: 11, lineHeight: 1.6 },
   rankItem: { display: 'flex', gap: 4, alignItems: 'baseline', padding: '2px 0', borderBottom: '1px dotted #ccc', fontSize: 11 },
-  sectionBox: (borderColor = '#ccc') => ({ border: `1px solid ${borderColor}`, margin: 6 }),
   formRow: { display: 'flex', alignItems: 'flex-start', gap: 6, padding: '5px 8px', borderBottom: '1px solid #eee' },
-  formLabel: { fontSize: 11, color: '#333', minWidth: 70, paddingTop: 3, flexShrink: 0 as const },
+  formLabel: { fontSize: 11, color: '#333', minWidth: 70, paddingTop: 3, flexShrink: 0 },
   req: { color: '#CC0000', fontSize: 9 },
-  textarea: { fontFamily: 'inherit', fontSize: 11, border: '1px solid #999', padding: 4, width: '100%', resize: 'vertical' as const, background: '#fffef8', color: '#000', outline: 'none' },
+  textarea: { fontFamily: 'inherit', fontSize: 11, border: '1px solid #999', padding: 4, width: '100%', resize: 'vertical', background: '#fffef8', color: '#000', outline: 'none' },
   select: { fontFamily: 'inherit', fontSize: 11, border: '1px solid #999', padding: '3px 4px', background: '#fff', color: '#000', width: '100%' },
-  intBtn: (active: boolean) => ({ fontSize: 10, padding: '3px 0', border: active ? '1px solid #003399' : '1px solid #999', background: active ? '#003399' : '#f5f5f5', color: active ? '#fff' : '#333', cursor: 'pointer', fontFamily: 'inherit', flex: 1, textAlign: 'center' as const }),
-  submitArea: { padding: 8, background: '#f0f4ff', borderTop: '2px solid #003399', display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' as const },
-  submitBtn: { background: '#CC0000', color: '#fff', fontSize: 13, fontWeight: 'bold' as const, border: '2px solid #990000', padding: '7px 20px', cursor: 'pointer', fontFamily: 'inherit', flexShrink: 0 as const },
+  submitArea: { padding: 8, background: '#f0f4ff', borderTop: '2px solid #003399', display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' },
+  submitBtn: { background: '#CC0000', color: '#fff', fontSize: 13, fontWeight: 'bold', border: '2px solid #990000', padding: '7px 20px', cursor: 'pointer', fontFamily: 'inherit', flexShrink: 0 },
   resultCard: { border: '1px solid #ccc', margin: 6 },
-  resultMeta: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '3px 9px', background: '#f5f5f5', borderTop: '1px solid #ddd', fontSize: 10, color: '#666', flexWrap: 'wrap' as const, gap: 4 },
+  resultMeta: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '3px 9px', background: '#f5f5f5', borderTop: '1px solid #ddd', fontSize: 10, color: '#666', flexWrap: 'wrap', gap: 4 },
   copyBtn: { fontSize: 10, border: '1px solid #999', background: '#fff', padding: '2px 8px', cursor: 'pointer', color: '#003399', fontFamily: 'inherit' },
-  angleTag: { fontSize: 10, fontWeight: 'bold' as const, color: '#CC0000', marginBottom: 4 },
-  newBadge: { background: '#CC0000', color: '#fff', fontSize: 9, fontWeight: 'bold' as const, padding: '1px 4px' },
+  angleTag: { fontSize: 10, fontWeight: 'bold', color: '#CC0000', marginBottom: 4 },
+  newBadge: { background: '#CC0000', color: '#fff', fontSize: 9, fontWeight: 'bold', padding: '1px 4px' },
   dot: { width: 7, height: 7, borderRadius: '50%', background: '#00cc00', display: 'inline-block', animation: 'blink 1.2s step-start infinite', flexShrink: 0 as const },
   statsGrid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1, background: '#ccc', margin: 6, border: '1px solid #ccc' },
   stat: { background: '#fff', padding: '5px 6px' },
@@ -172,7 +173,7 @@ export default function Home() {
         {/* Left sidebar */}
         <div style={s.sideL}>
           <div style={{ borderBottom: '1px solid #ccc' }}>
-            <div style={s.boxTitle()}>📊 本日のランキング</div>
+            <div style={boxTitle()}>📊 本日のランキング</div>
             <div style={s.sideContent}>
               <div style={{ fontSize: 10, color: '#666', marginBottom: 3 }}>人気ローストトップ5</div>
               {['Hollow validation','Weaponised empathy','Nuclear persona','Accidental self-own','Consultant mode'].map((t, i) => (
@@ -182,7 +183,7 @@ export default function Home() {
           </div>
 
           <div style={{ borderBottom: '1px solid #ccc' }}>
-            <div style={s.boxTitle('#CC0000')}>🔥 人気タグ</div>
+            <div style={boxTitle('#CC0000')}>🔥 人気タグ</div>
             <div style={s.sideContent}>
               {['#コールドプランジ','#7figures','#grind','#3am','#mindset','#disruption','#hustle'].map(tag => (
                 <span key={tag} style={{ fontSize: 10, background: '#ffe0e0', padding: '1px 5px', margin: '2px', display: 'inline-block', border: '1px solid #ffaaaa' }}>{tag}</span>
@@ -191,7 +192,7 @@ export default function Home() {
           </div>
 
           <div style={{ borderBottom: '1px solid #ccc' }}>
-            <div style={s.boxTitle('#006600')}>🐱 今日のネコ</div>
+            <div style={boxTitle('#006600')}>🐱 今日のネコ</div>
             <div style={{ border: '2px solid #ff69b4', background: '#fff0f8', padding: 5, margin: 6, textAlign: 'center' }}>
               <img src="/cat.gif" alt="今日のネコ" style={{ width: '100%', display: 'block', imageRendering: 'pixelated' }} />
               <div style={{ fontSize: 9, color: '#ff69b4', marginTop: 3 }}>作業中のネコ ♥<br /><span style={{ color: '#999' }}>「私もローストしてあげる」</span></div>
@@ -216,7 +217,7 @@ export default function Home() {
           </div>
 
           <div style={{ borderBottom: '1px solid #ccc' }}>
-            <div style={s.boxTitle('#660099')}>🌤 今日の格言</div>
+            <div style={boxTitle('#660099')}>🌤 今日の格言</div>
             <div style={{ ...s.sideContent, fontSize: 10, color: '#444', fontStyle: 'italic' }}>
               &ldquo;The best roast is the one they read twice before realising.&rdquo;<br />
               <span style={{ color: '#999' }}>— 匿名ユーザー #4821</span>
@@ -239,8 +240,8 @@ export default function Home() {
           </div>
 
           {/* How to use */}
-          <div style={s.sectionBox('#003399')}>
-            <div style={s.boxTitle()}>📋 How to use</div>
+          <div style={sectionBox('#003399')}>
+            <div style={boxTitle()}>📋 How to use</div>
             <div style={{ padding: '7px 9px', background: '#f0f4ff' }}>
               {[
                 'Paste an AI-generated hustle bro LinkedIn post into the box below',
@@ -257,8 +258,8 @@ export default function Home() {
           </div>
 
           {/* Input */}
-          <div style={s.sectionBox()}>
-            <div style={s.boxTitle()}>✏️ Paste the offending post here <span style={{ fontWeight: 'normal', fontSize: 9 }}>（必須 / required）</span></div>
+          <div style={sectionBox()}>
+            <div style={boxTitle()}>✏️ Paste the offending post here <span style={{ fontWeight: 'normal', fontSize: 9 }}>（必須 / required）</span></div>
             <div style={s.formRow}>
               <div style={s.formLabel}>Post content <span style={s.req}>★</span></div>
               <div style={{ flex: 1 }}>
@@ -282,7 +283,7 @@ export default function Home() {
               <div>
                 <div style={{ display: 'flex', gap: 4 }}>
                   {intensityOpts.map(opt => (
-                    <button key={opt.value} onClick={() => setIntensity(opt.value)} style={s.intBtn(intensity === opt.value)}>
+                    <button key={opt.value} onClick={() => setIntensity(opt.value)} style={intBtn(intensity === opt.value)}>
                       {opt.label}
                     </button>
                   ))}
@@ -334,8 +335,8 @@ export default function Home() {
 
           {/* Results */}
           {roasts.length > 0 && (
-            <div style={s.sectionBox('#006600')}>
-              <div style={s.boxTitle('#006600')}>✅ Results — 3 comments generated</div>
+            <div style={sectionBox('#006600')}>
+              <div style={boxTitle('#006600')}>✅ Results — 3 comments generated</div>
               {roasts.map((r, i) => (
                 <div key={i} style={{ ...s.resultCard, animationDelay: `${i * 80}ms` }} className="fade-in">
                   <div style={{ background: '#f9fff9', padding: '6px 8px', borderBottom: '1px solid #ddd' }}>
@@ -371,7 +372,7 @@ export default function Home() {
         {/* Right sidebar */}
         <div style={s.sideR}>
           <div style={{ borderBottom: '1px solid #ccc' }}>
-            <div style={s.boxTitle('#cc6600')}>📰 最新ニュース</div>
+            <div style={boxTitle('#cc6600')}>📰 最新ニュース</div>
             <div style={{ ...s.sideContent, fontSize: 10, lineHeight: 1.7 }}>
               {[
                 { badge: true, text: 'LinkedInで話題の「4am club」投稿が急増中' },
@@ -387,7 +388,7 @@ export default function Home() {
           </div>
 
           <div style={{ borderBottom: '1px solid #ccc' }}>
-            <div style={s.boxTitle('#222')}>👥 コミュニティ</div>
+            <div style={boxTitle('#222')}>👥 コミュニティ</div>
             <div style={{ ...s.sideContent, fontSize: 10, lineHeight: 1.7 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginBottom: 4 }}>
                 <span style={s.dot} /> 247人がオンライン中
@@ -402,7 +403,7 @@ export default function Home() {
           </div>
 
           <div style={{ borderBottom: '1px solid #ccc' }}>
-            <div style={s.boxTitle('#CC0000')}>⚠️ 注意事項</div>
+            <div style={boxTitle('#CC0000')}>⚠️ 注意事項</div>
             <div style={{ ...s.sideContent, fontSize: 10, color: '#444', lineHeight: 1.6 }}>
               ・実名での投稿はお控えください<br />
               ・誹謗中傷はNGです<br />
@@ -412,7 +413,7 @@ export default function Home() {
           </div>
 
           <div style={{ borderBottom: '1px solid #ccc' }}>
-            <div style={s.boxTitle('#006600')}>🏆 今週のMVP</div>
+            <div style={boxTitle('#006600')}>🏆 今週のMVP</div>
             <div style={{ ...s.sideContent, fontSize: 10, textAlign: 'center', padding: 8 }}>
               <div style={{ fontSize: 24 }}>🥇</div>
               <div style={{ fontWeight: 'bold', color: '#CC0000' }}>linkedinkiller_99</div>
@@ -428,7 +429,7 @@ export default function Home() {
           </div>
 
           <div style={{ borderBottom: '1px solid #ccc' }}>
-            <div style={s.boxTitle('#660099')}>📅 今日のできごと</div>
+            <div style={boxTitle('#660099')}>📅 今日のできごと</div>
             <div style={{ ...s.sideContent, fontSize: 10, lineHeight: 1.7 }}>
               <div>2026年6月8日 月</div>
               <div style={{ color: '#CC0000', fontWeight: 'bold' }}>ローストの日</div>
