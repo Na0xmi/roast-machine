@@ -2,144 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-display: 'DM Serif Display', serif;
-  --font-mono: 'DM Mono', monospace;
-  --bg: #F5F0E8;
-  --bg-card: #FDFAF4;
-  --ink: #1A1208;
-  --ink-muted: #6B5F4A;
-  --ink-faint: #A89880;
-  --gold: #C8922A;
-  --gold-light: #F0D89A;
-  --gold-dark: #8A6018;
-  --red: #C43030;
-  --red-light: #F5DADA;
-  --border: rgba(26,18,8,0.12);
-  --border-strong: rgba(26,18,8,0.25);
-  --radius: 4px;
-  --radius-lg: 8px;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-mono);
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* Noise texture overlay */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
-}
-
-.content {
-  position: relative;
-  z-index: 1;
-}
-
-/* Typography */
-.display {
-  font-family: var(--font-display);
-  font-weight: 400;
-}
-
-/* Textarea */
-textarea {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius);
-  color: var(--ink);
-  padding: 12px 14px;
-  width: 100%;
-  resize: vertical;
-  outline: none;
-  transition: border-color 0.15s;
-  line-height: 1.6;
-}
-
-textarea::placeholder {
-  color: var(--ink-faint);
-}
-
-textarea:focus {
-  border-color: var(--gold);
-}
-
-/* Select */
-select {
-  font-family: var(--font-mono);
+  font-family: 'MS Gothic', 'Hiragino Kaku Gothic ProN', 'Meiryo', monospace;
+  background: #fff;
   font-size: 12px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius);
-  color: var(--ink);
-  padding: 8px 32px 8px 10px;
-  width: 100%;
-  outline: none;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B5F4A' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  transition: border-color 0.15s;
+  color: #000;
+  -webkit-font-smoothing: auto;
 }
 
-select:focus {
-  border-color: var(--gold);
-}
+a { color: #003399; text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+@keyframes marquee { from { transform: translateX(100vw); } to { transform: translateX(-100%); } }
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes fadeSlideIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-/* Animations */
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes fadeSlideIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-spin-slow {
-  animation: spin 1.5s linear infinite;
-}
-
-.fade-slide-in {
-  animation: fadeSlideIn 0.3s ease forwards;
-}
-
-/* Stamp effect */
-.stamp {
-  display: inline-block;
-  border: 2px solid var(--red);
-  color: var(--red);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 2px 8px;
-  border-radius: 2px;
-  transform: rotate(-2deg);
-  opacity: 0.85;
+.fade-in {
+  animation: fadeSlideIn 0.25s ease forwards;
 }
