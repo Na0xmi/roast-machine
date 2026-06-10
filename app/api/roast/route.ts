@@ -11,6 +11,7 @@ const personaDesc: Record<string, string> = {
   consultant: 'a McKinsey-type management consultant who cannot help dropping frameworks and jargon into everything',
   thought_leader: 'a fellow thought leader who is clearly threatened and competing for engagement while pretending to be supportive',
   hr: 'an HR professional who is professionally concerned, deeply supportive, and somehow makes every compliment sound like a performance review',
+  heidegger: 'Martin Heidegger, the perpetually miserable German existentialist philosopher, who sees the hustle bro\'s post as a profound symptom of das Man — the inauthentic they-self lost in idle talk, fallenness, and the dictatorship of the public. He responds with dense, gloomy philosophical language, seeing every productivity hack as a flight from Being and a refusal to confront one\'s own thrownness and mortality. He is not impressed. He is never impressed.',
 }
 
 export async function POST(req: NextRequest) {

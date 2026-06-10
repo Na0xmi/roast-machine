@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 
 type Roast = { comment: string; angle: string }
 type Intensity = 'subtle' | 'medium' | 'nuclear'
-type Persona = 'colleague' | 'consultant' | 'thought_leader' | 'hr'
+type Persona = 'colleague' | 'consultant' | 'thought_leader' | 'hr'| 'heidegger'
 
 const LOADING_MSGS = [
   'シナジーを最大化中...',
@@ -118,6 +118,7 @@ export default function Home() {
     { value: 'consultant', label: 'Management consultant' },
     { value: 'thought_leader', label: 'Fellow thought leader' },
     { value: 'hr', label: 'HR professional' },
+    { value: 'heidegger', label: 'Heidegger (miserable)' },
   ]
 
   return (
